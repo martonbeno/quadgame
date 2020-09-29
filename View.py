@@ -5,7 +5,11 @@ from Board import *
 
 class View:
 	def __init__(self):
+		
+		path = ".\\images\\"
+		
 		root = tk.Tk()
+                root.title("Quad game")
 		root.geometry("800x600")
 		
 		self.bg_color = "saddle brown"
@@ -24,11 +28,11 @@ class View:
 		self.small_images = dict()
 		self.big_images = dict()
 		for piece in self.board.pieces_left:
-			img = Image.open(''.join(str(i) for i in piece) + ".png")
+			img = Image.open(path + ''.join(str(i) for i in piece) + ".png")
 			self.big_images[piece] = ImageTk.PhotoImage(img)
 			self.small_images[piece] = ImageTk.PhotoImage(img.resize((50,50)))
-		self.small_images[None] = ImageTk.PhotoImage(Image.open("empty.png").resize((50,50)))
-		self.big_images[None] = ImageTk.PhotoImage(Image.open("empty.png"))
+		self.small_images[None] = ImageTk.PhotoImage(Image.open(path + "empty.png").resize((50,50)))
+		self.big_images[None] = ImageTk.PhotoImage(Image.open(path + "empty.png"))
 		
 		self.new_game()
 		
